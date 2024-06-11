@@ -11,7 +11,7 @@ let buildValueItemFunc = buildValueTxt
 
 function shorturl() {
   if (document.querySelector("#longURL").value == "") {
-    alert("Url cannot be empty!")
+    alert("Url不能为空!")
     return
   }
   
@@ -20,7 +20,7 @@ function shorturl() {
   document.getElementById('keyPhrase').value = document.getElementById('keyPhrase').value.replace(/\s/g, "-");
 
   document.getElementById("addBtn").disabled = true;
-  document.getElementById("addBtn").innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Please wait...';
+  document.getElementById("addBtn").innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>请稍候...';
   fetch(apiSrv, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -30,7 +30,7 @@ function shorturl() {
   }).then(function (myJson) {
     res = myJson;
     document.getElementById("addBtn").disabled = false;
-    document.getElementById("addBtn").innerHTML = 'Shorten it';
+    document.getElementById("addBtn").innerHTML = '缩短它';
 
     // 成功生成短链 Succeed
     if (res.status == "200") {
@@ -54,7 +54,7 @@ function shorturl() {
     alert("Unknow error. Please retry!");
     console.log(err);
     document.getElementById("addBtn").disabled = false;
-    document.getElementById("addBtn").innerHTML = 'Shorten it';
+    document.getElementById("addBtn").innerHTML = '缩短它';
   })
 }
 
